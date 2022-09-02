@@ -5,11 +5,9 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
 
+    resources :tweets, except: [:edit, :update]
+
 
   devise_for :users
-  root to: 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: 'tweets#index'
 end
